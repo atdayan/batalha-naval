@@ -1,3 +1,3 @@
-function alerta () {
-	alert("eeee");
+function receberCelula(celula) {
+	
 }
