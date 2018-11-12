@@ -1,0 +1,45 @@
+/* RESET */
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #EBF0F4;
+}
+.tabuleiropc{
+	float: left;
+
+}
+table{
+	margin: 40px;
+}
+#table1{
+	float: left;
+}
+#table2{
+	float: right;
+}
+.tdpc{
+    padding: 20px;
+    background-color: #006178;
+    cursor: none;
+}
+.tdalgo{
+	font-family: 'Press Start 2P', cursive;
+	background-color: rgba(0, 0, 0, 0.0);
+	cursor: default;
+	color: #000;
+}
+#tabuleirojogador{
+	float: right;
+	top: 0px;
+}
+.tdjg{
+	padding: 20px;
+    background-color: #00C4F2;
+    cursor: crosshair;
+}
