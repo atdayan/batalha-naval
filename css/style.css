@@ -10,36 +10,44 @@ body{
 	padding: 0;
 	background-color: #EBF0F4;
 }
-.grid-adv{
-	float: left;
 
-}
-table{
-	margin: 40px;
-}
-#table1{
+
+ /*TABULEIRO DO ADVERSARIO*/
+#tab-adversario {
 	float: left;
+	top: 0px;
 }
-#table2{
-	float: right;
+#tab-adversario table {
+	margin: 40px;
+	margin-left: 0;
+	float: left;
+	cursor: not-allowed;
 }
-.tdpc{
-    padding: 20px;
+#tab-adversario table td {
+	padding: 20px;
     background-color: #006178;
-    cursor: none;
 }
-.tdindice{
-	font-family: 'Press Start 2P', cursive;
-	background-color: rgba(0, 0, 0, 0.0);
-	cursor: default;
-	color: #000;
-}
-#tabuleirojogador{
+ /*FIM TABULEIRO DO ADVERSARIO*/
+
+/*TABULEIRO DO JOGADOR*/
+#tab-jogador {
 	float: right;
 	top: 0px;
 }
-.tdjg{
+#tab-jogador table {
+	margin: 40px;
+	float: right;
+	cursor: crosshair;
+}
+#tab-jogador table td {
 	padding: 20px;
     background-color: #00C4F2;
-    cursor: crosshair;
+}
+/*FIM TABULEIRO DO JOGADOR*/
+
+#conteudo .indice {
+	font-family: 'Press Start 2P', cursive;
+	cursor: default;
+	color: #000;
+	background-color: #EBF0F4;
 }
