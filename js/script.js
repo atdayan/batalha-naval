@@ -7,13 +7,20 @@ let jogo = (function () {
 	let _celulas = [];
 	let _navios  = [];
 
+	let gerarNavios = function () {
+		return ;
+	}
+
 	let comparar = function () {
-		console.log('eae gay');
+		let idcel = arguments["0"].target.id; //arguments é uma variável nativa de td função
+		console.log(arguments);
+
+		_celulas.splice();
 	}
 	
 	let getCelulas = function () {
 		let tbl = document.getElementById('tab-adversario');
-		_celulas = Array.from(tbl.getElementsByTagName('td')); //converte pois eh retornado HTMLCollection
+		_celulas = Array.from(tbl.getElementsByTagName('td'));//converte pois é retornado HTMLCollection
 
 		_celulas.forEach((elem) => {
 			elem.addEventListener('click', comparar);
