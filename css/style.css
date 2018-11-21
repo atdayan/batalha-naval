@@ -12,38 +12,41 @@ body{
 }
 
 
- /*TABULEIRO DO ADVERSARIO*/
-#tab-adversario {
+ /*TABULEIRO DO JOGADOR*/
+#tab-jogador {
 	float: left;
 	top: 0px;
 }
-#tab-adversario table {
+#tab-jogador table {
 	margin: 40px;
 	margin-left: 0;
 	float: left;
 	cursor: not-allowed;
 }
-#tab-adversario table td {
+#tab-jogador table td {
 	padding: 20px;
     background-color: #006178;
 }
- /*FIM TABULEIRO DO ADVERSARIO*/
+ /*FIM TABULEIRO DO JOGADOR*/
 
-/*TABULEIRO DO JOGADOR*/
-#tab-jogador {
+/*TABULEIRO DO ADVERSARIO*/
+#tab-adversario {
 	float: right;
 	top: 0px;
 }
-#tab-jogador table {
+#tab-adversario table {
 	margin: 40px;
 	float: right;
 	cursor: crosshair;
 }
-#tab-jogador table td {
+#tab-adversario table td {
 	padding: 20px;
     background-color: #00C4F2;
 }
-/*FIM TABULEIRO DO JOGADOR*/
+#tab-adversario table td:not(.indice):hover {
+	background-color: #00B2DB;
+}
+/*FIM TABULEIRO DO ADVERSARIO*/
 
 #conteudo .indice {
 	font-family: 'Press Start 2P', cursive;
