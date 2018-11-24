@@ -8,7 +8,20 @@ let jogo = (function () {
 	let _navios  = [];
 
 	let gerarNavios = function () {
-		return ;
+		// 0 = vertical, 1 = horizontal
+		let direcao = Math.floor(Math.random()*2);
+		let navio = {};
+
+		let gerarId
+		let letras = ['a','b','c','d','e','f','g','h'];
+		let num    = [1,2,3,4,5,6,7,8];
+
+
+		if (direcao == 0) {
+			if (true) {}
+		} else {
+
+		}
 	}
 
 	let comparar = function () {
@@ -33,6 +46,7 @@ let jogo = (function () {
 
 	return {
 		iniciar: iniciar,
+		gerar: gerarNavios
 	}
 })();
 jogo.iniciar();
