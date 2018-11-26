@@ -21,7 +21,7 @@ let jogo = (function () {
 
 		let cont = 0;
 		while (cont < 5) {
-			navio = {};
+			navio = [];
 			direcao = numAleat(2); //0 == vert, 1 == horiz
 			sobrepos = false;
 
@@ -29,24 +29,23 @@ let jogo = (function () {
 				aLetra = letras[numAleat(8)];
 				oNumero = numAleat(6) + 1;
 	
-				navio['id1'] = aLetra + oNumero;
-				navio['id2'] = aLetra + (oNumero + 1);
-				navio['id3'] = aLetra + (oNumero + 2);
+				navio[0] = aLetra + oNumero;
+				navio[1] = aLetra + (oNumero + 1);
+				navio[2] = aLetra + (oNumero + 2);
 
 			} else { // nao pode G ou H
 				index = numAleat(6);
 				oNumero = numAleat(8) + 1;
 	
-				navio['id1'] = letras[index] + oNumero;
-				navio['id2'] = letras[index+1] + oNumero;
-				navio['id3'] = letras[index+2] + oNumero;
+				navio[0] = letras[index] + oNumero;
+				navio[1] = letras[index+1] + oNumero;
+				navio[2] = letras[index+2] + oNumero;
 			}
 
 			if (idsUsados != undefined) {
-				let valores = Object.values(navio);
-				for (let i = 0; i < valores.length; i++) {
+				for (let i = 0; i < navio.length; i++) {
 					for (let j = 0; j < idsUsados.length; j++) {
-						if (valores[i] === idsUsados[j]) {
+						if (navio[i] === idsUsados[j]) {
 							sobrepos = true;
 							break;
 						}
@@ -54,21 +53,31 @@ let jogo = (function () {
 				}
 			}
 
-			if(sobrepos) continue;
+			if(sobrepos) 
+				continue;
 
 			cont++;
 
-			idsUsados.push(navio['id1']);
-			idsUsados.push(navio['id2']);
-			idsUsados.push(navio['id3']);
+			idsUsados.push(navio[0]);
+			idsUsados.push(navio[1]);
+			idsUsados.push(navio[2]);
 
 			_navios.push(navio);
 		}//!loop
-		return _navios;
+		console.log(_navios)
 	}
 
 	let checarACelula = function () {
-
+		let celulaAcertada = '';
+		_navios.forEach((navio) => {
+			navio.forEach((navioId, index) => {
+				if (navioId === this.id) {
+					console.log("acertou em "+this.id);
+					navio.splice(index, 1);
+					console.log(navio);
+				}
+			});
+		});
 	}
 
 	let construirTabuleiro = function () {
@@ -82,18 +91,19 @@ let jogo = (function () {
 		});
 
 		_celulas.forEach((elem) => {
-			elem.addEventListener('click', checarACelula)
+			elem.addEventListener('click', checarACelula);
 		});
-		return _celulas;
+
+
 	}
 
 	let iniciar = function () {
-		console.log(gerarNavios());
-		console.log(construirTabuleiro());
+		gerarNavios();
+		construirTabuleiro();
 	};
 
 	return {
-		iniciar: iniciar
+		iniciar: iniciar, cell : _navios
 	}
 })();
 jogo.iniciar();
