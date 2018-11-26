@@ -7,6 +7,7 @@ let jogo = (function () {
 	let _celulas = [];
 	let _navios = [];
 
+	// esta funcao so serve para deixar mais legivel o codigo das outras funcoes 
 	let numAleat = function (max) {	return Math.floor(Math.random() * max);}
 
 	let gerarNavios = function () {
@@ -66,8 +67,29 @@ let jogo = (function () {
 		return _navios;
 	}
 
+	let checarACelula = function () {
+
+	}
+
+	let construirTabuleiro = function () {
+		let tabela = document.getElementById('tabela');
+		let tds = Array.from(tabela.getElementsByTagName('td')); //converte pq eh retornado um HTMLCollection
+ 		
+ 		// faz com que _celulas so receba os tds com id (exclui as linhas de letra e numeros (A-H, 1-8))
+		tds.forEach((td) => {
+			if (td.id != '')
+				_celulas.push(td);
+		});
+
+		_celulas.forEach((elem) => {
+			elem.addEventListener('click', checarACelula)
+		});
+		return _celulas;
+	}
+
 	let iniciar = function () {
 		console.log(gerarNavios());
+		console.log(construirTabuleiro());
 	};
 
 	return {
