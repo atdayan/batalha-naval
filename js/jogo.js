@@ -14,6 +14,9 @@ let jogo = (function () {
 		if (tentativa == 'acerto') {
 			cell.style.background = 'black';
 		}
+		if (tentativa == 'erro') {
+			cell.style.background = 'blue';
+		}
 	}
 
 	let gerarNavios = function () {
@@ -87,6 +90,8 @@ let jogo = (function () {
 			
 				if (palpite === navioAtual[j]) {
 
+
+					numAcertos++;
 					cell = navioAtual.splice(j, 1);
 					colorirCelula('acerto', this);
 					console.log('acertou '+ cell);
@@ -98,7 +103,7 @@ let jogo = (function () {
 					}
 				}
 			}
-			
+			if (numAcertos == 0) {console.log('errou');colorirCelula('erro', this)}
 		}
 		if (_navios.length == 0) {
 			console.log('fim');
