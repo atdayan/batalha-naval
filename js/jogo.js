@@ -9,6 +9,12 @@ let jogo = (function () {
 
 	// esta funcao so serve para deixar mais legivel o codigo das outras funcoes 
 	let numAleat = function (max) {	return Math.floor(Math.random() * max);}
+	let fimDeJogo = function () {location.href = '../fimdejogo.html';}
+	let colorirCelula = function (tentativa, cell) {
+		if (tentativa == 'acerto') {
+			cell.style.background = 'black';
+		}
+	}
 
 	let gerarNavios = function () {
 		let letras = 'abcdefgh';
@@ -20,7 +26,7 @@ let jogo = (function () {
 		let sobrepos;
 
 		let cont = 0;
-		while (cont < 5) {
+		while (cont < 2) {
 			navio = [];
 			direcao = numAleat(2); //0 == vert, 1 == horiz
 			sobrepos = false;
@@ -68,16 +74,36 @@ let jogo = (function () {
 	}
 
 	let checarACelula = function () {
-		let celulaAcertada = '';
-		_navios.forEach((navio) => {
-			navio.forEach((navioId, index) => {
-				if (navioId === this.id) {
-					console.log("acertou em "+this.id);
-					navio.splice(index, 1);
-					console.log(navio);
+		let cell = '';
+		let navioDestr = [];
+		let palpite = this.id;
+		let numAcertos = 0;
+		let navioAtual = [];
+
+		for (let i = 0; i < _navios.length; i++) { // este percorre os navios
+			navioAtual = _navios[i];
+
+			for (let j = 0; j < navioAtual.length; j++) {
+			
+				if (palpite === navioAtual[j]) {
+
+					cell = navioAtual.splice(j, 1);
+					colorirCelula('acerto', this);
+					console.log('acertou '+ cell);
+			
+					if (navioAtual.length == 0) {
+
+						_navios.splice(_navios[i], 1);
+						console.log('destruiu!!!');
+					}
 				}
-			});
-		});
+			}
+			
+		}
+		if (_navios.length == 0) {
+			console.log('fim');
+			fimDeJogo();
+		}
 	}
 
 	let construirTabuleiro = function () {
@@ -90,8 +116,8 @@ let jogo = (function () {
 				_celulas.push(td);
 		});
 
-		_celulas.forEach((elem) => {
-			elem.addEventListener('click', checarACelula);
+		_celulas.forEach((celula) => {
+			celula.addEventListener('click', checarACelula);
 		});
 
 
