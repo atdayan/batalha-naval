@@ -15,7 +15,7 @@ let jogo = (function () {
 			cell.style.background = 'black';
 		}
 		if (tentativa == 'erro') {
-			cell.style.background = 'blue';
+			cell.style.background = '#276B94';
 		}
 	}
 
@@ -80,30 +80,28 @@ let jogo = (function () {
 		let cell = '';
 		let navioDestr = [];
 		let palpite = this.id;
-		let numAcertos = 0;
+		let errou = true;
 		let navioAtual = [];
-
+		
 		for (let i = 0; i < _navios.length; i++) { // este percorre os navios
 			navioAtual = _navios[i];
 
 			for (let j = 0; j < navioAtual.length; j++) {
 			
-				if (palpite === navioAtual[j]) {
+				if (palpite === navioAtual[j]) { //aqui compara se o palpite acertou
 
-
-					numAcertos++;
+					errou = false;
 					cell = navioAtual.splice(j, 1);
 					colorirCelula('acerto', this);
+					
 					console.log('acertou '+ cell);
 			
 					if (navioAtual.length == 0) {
-
 						_navios.splice(_navios[i], 1);
 						console.log('destruiu!!!');
 					}
 				}
 			}
-			if (numAcertos == 0) {console.log('errou');colorirCelula('erro', this)}
 		}
 		if (_navios.length == 0) {
 			console.log('fim');
