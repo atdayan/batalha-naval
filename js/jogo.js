@@ -9,14 +9,10 @@ let jogo = (function () {
 
 	// esta funcao so serve para deixar mais legivel o codigo das outras funcoes 
 	let numAleat = function (max) {	return Math.floor(Math.random() * max);}
-	let fimDeJogo = function () {location.href = '../fimdejogo.html';}
+	let fimDeJogo = function () {location.href = 'fimdejogo.html';}
 	let colorirCelula = function (tentativa, cell) {
-		if (tentativa == 'acerto') {
-			cell.style.background = 'black';
-		}
-		if (tentativa == 'erro') {
-			cell.style.background = '#276B94';
-		}
+		if (tentativa == 'acerto') cell.style.background = 'black';
+		if (tentativa == 'erro') cell.style.background = '#276B94';
 	}
 
 	let gerarNavios = function () {
@@ -73,37 +69,50 @@ let jogo = (function () {
 
 			_navios.push(navio);
 		}//!loop
-		console.log(_navios)
+		_navios.forEach(e => console.log(e));
 	}
 
 	let checarACelula = function () {
 		let cell = '';
 		let navioDestr = [];
 		let palpite = this.id;
-		let errou = true;
 		let navioAtual = [];
+		let acertou = false;
 		
-		for (let i = 0; i < _navios.length; i++) { // este percorre os navios
+
+		// este percorre os navios
+		for (let i = 0; i < _navios.length; i++) {
 			navioAtual = _navios[i];
 
+			// este loop percorre cada pedaco do navio
 			for (let j = 0; j < navioAtual.length; j++) {
-			
-				if (palpite === navioAtual[j]) { //aqui compara se o palpite acertou
 
-					errou = false;
+				//aqui compara se o palpite acertou
+				if (palpite === navioAtual[j]) { 
+
 					cell = navioAtual.splice(j, 1);
 					colorirCelula('acerto', this);
+					acertou = true;
 					
 					console.log('acertou '+ cell);
-			
+					
 					if (navioAtual.length == 0) {
 						_navios.splice(_navios[i], 1);
 						console.log('destruiu!!!');
 					}
 				}
-			}
+			}//!loop
+		}//!loop
+
+		// se o usuario errou o tiro...
+		if (!acertou) { 
+			console.log('errou');
+			colorirCelula('erro', this);
 		}
-		if (_navios.length == 0) {
+
+
+		// se todos os navios tiverem sido destruidos
+		if (_navios.length == 0) { 
 			console.log('fim');
 			fimDeJogo();
 		}
