@@ -46,6 +46,7 @@ let jogo = (function () {
 				navio[2] = letras[index+2] + oNumero;
 			}
 
+			// compara, id a id, se este navio gerado esta sobrepondo outro ja existente
 			if (idsUsados != undefined) {
 				for (let i = 0; i < navio.length; i++) {
 					for (let j = 0; j < idsUsados.length; j++) {
@@ -57,6 +58,7 @@ let jogo = (function () {
 				}
 			}
 
+			// se sobrepos, reinicie o processo de geracao deste navio, ate nao ter nenhum sobreposto
 			if(sobrepos) 
 				continue;
 
@@ -68,6 +70,8 @@ let jogo = (function () {
 
 			_navios.push(navio);
 		}//!loop
+
+
 		_navios.forEach(e => console.log(e));
 	}
 
