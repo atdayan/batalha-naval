@@ -1,7 +1,6 @@
-// gerar os navios e seus lugares aleatoriamente
-// deixar o jogador fazer sua jogada
-// comparar pra ver se acertou
-// apagar célula correspondente da tabela
+// gerar os navios com id's correspondentes aos do tabuleiro
+// esperar pelo clique do usuario na celula do tabuleiro
+// comparar o id do navio com o id do <td> clicado pelo usuario
 
 let jogo = (function () {
 	let _celulas = [];
@@ -30,7 +29,7 @@ let jogo = (function () {
 			direcao = numAleat(2); //0 == vert, 1 == horiz
 			sobrepos = false;
 
-			if (direcao == 0) { // nao pode 7 e 8
+			if (direcao == 0) { // nao pode 7 e 8 pq passa do grid
 				aLetra = letras[numAleat(8)];
 				oNumero = numAleat(6) + 1;
 	
@@ -38,7 +37,7 @@ let jogo = (function () {
 				navio[1] = aLetra + (oNumero + 1);
 				navio[2] = aLetra + (oNumero + 2);
 
-			} else { // nao pode G ou H
+			} else { // nao pode G ou H pq passa do grid
 				index = numAleat(6);
 				oNumero = numAleat(8) + 1;
 	
@@ -69,6 +68,8 @@ let jogo = (function () {
 
 			_navios.push(navio);
 		}//!loop
+
+		// so teste
 		_navios.forEach(e => console.log(e));
 	}
 
@@ -145,7 +146,9 @@ let jogo = (function () {
 	};
 
 	return {
-		iniciar: iniciar, cell : _navios
+		iniciar: iniciar, 
+		// so teste
+		cell : _navios
 	}
 })();
 jogo.iniciar();
