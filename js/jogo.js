@@ -1,7 +1,6 @@
-// gerar os navios e seus lugares aleatoriamente
-// deixar o jogador fazer sua jogada
-// comparar pra ver se acertou
-// apagar célula correspondente da tabela
+// gerar os navios com id's correspondentes aos do tabuleiro
+// esperar pelo clique do usuario na celula do tabuleiro
+// comparar o id do navio com o id do <td> clicado pelo usuario
 
 let jogo = (function () {
 	let _celulas = [];
