@@ -25,7 +25,7 @@ let jogo = (function () {
 		let sobrepos;
 
 		let cont = 0;
-		while (cont < 2) {
+		while (cont < 5) {
 			navio = [];
 			direcao = numAleat(2); //0 == vert, 1 == horiz
 			sobrepos = false;
@@ -90,13 +90,14 @@ let jogo = (function () {
 				//aqui compara se o palpite acertou
 				if (palpite === navioAtual[j]) { 
 
-					cell = navioAtual.splice(j, 1);
-					colorirCelula('acerto', this);
+					cell = navioAtual.splice(j, 1); // retire aquele pedaco do vetor de navios
+					colorirCelula('acerto', this); // pinte a celula com a cor designada (preto).
 					acertou = true;
 					
 					console.log('acertou '+ cell);
 					
-					if (navioAtual.length == 0) {
+					// se aquele navio nao tiver mais nenhum pedaco...
+					if (navioAtual.length == 0) { 
 						_navios.splice(_navios[i], 1);
 						console.log('destruiu!!!');
 					}
