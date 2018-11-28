@@ -110,7 +110,9 @@ let jogo = (function () {
 			colorirCelula('erro', this);
 		}
 
-
+		//!!!
+		this.removeEventListener('click', checarACelula);
+		
 		// se todos os navios tiverem sido destruidos
 		if (_navios.length == 0) { 
 			console.log('fim');
@@ -127,7 +129,8 @@ let jogo = (function () {
 			if (td.id != '')
 				_celulas.push(td);
 		});
-
+		
+		// adiciona o evento de clique para cada célula do tabuleiro
 		_celulas.forEach((celula) => {
 			celula.addEventListener('click', checarACelula);
 		});
