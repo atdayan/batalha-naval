@@ -110,7 +110,7 @@ let jogo = (function () {
 			colorirCelula('erro', this);
 		}
 
-		//!!!
+		//remove o ouvinte de evento da celula clicada, para nao contar mais de uma vez a mesma celula
 		this.removeEventListener('click', checarACelula);
 		
 		// se todos os navios tiverem sido destruidos
