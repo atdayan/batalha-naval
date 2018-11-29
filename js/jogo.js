@@ -5,10 +5,16 @@
 let jogo = (function () {
 	let _celulas = [];
 	let _navios = [];
+	let _tentativas = 0;
 
 	// esta funcao so serve para deixar mais legivel o codigo das outras funcoes 
 	let numAleat = function (max) {	return Math.floor(Math.random() * max);}
-	let fimDeJogo = function () {location.href = 'fimdejogo.html';}
+	let fimDeJogo = function () {
+		//passa o numero de tentativas para a pagina de fim de jogo
+		let tent = JSON.stringify(_tentativas);
+		sessionStorage.setItem('tent', tent); // recurso nativo do navegador 
+		location.href = 'fimdejogo.html';
+	}
 	let colorirCelula = function (tentativa, cell) {
 		if (tentativa == 'acerto') cell.style.background = 'black';
 		if (tentativa == 'erro') cell.style.background = '#276B94';
@@ -24,7 +30,7 @@ let jogo = (function () {
 		let sobrepos;
 
 		let cont = 0;
-		while (cont < 5) {
+		while (cont < 1) {
 			navio = [];
 			direcao = numAleat(2); //0 == vert, 1 == horiz
 			sobrepos = false;
@@ -82,6 +88,7 @@ let jogo = (function () {
 		let navioAtual = [];
 		let acertou = false;
 		
+		_tentativas++;
 
 		// este percorre os navios
 		for (let i = 0; i < _navios.length; i++) {
@@ -148,7 +155,7 @@ let jogo = (function () {
 	};
 
 	return {
-		iniciar: iniciar, cell : _navios
+		iniciar: iniciar, cell : _navios, tentativas : _tentativas
 	}
 })();
 jogo.iniciar();

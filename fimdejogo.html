@@ -5,7 +5,12 @@
 	<title>Fim de jogo</title>
 </head>
 <body>
-	<h1>GANHOU</h1>
-  <button onclick="location.href = 'index.html'">retornar</button>
+	<h1>GANHOU</h1><br>
+	Com <span id="tentativas"></span> tentativas.
+	<button onclick="location.href = 'index.html'">retornar</button>
+	<script>
+		let tentativas = JSON.parse(sessionStorage.getItem('tent')); //desempacota o valor passado por jogo.js
+		document.getElementById('tentativas').innerHTML = tentativas;
+	</script>
 </body>
 </html>
